@@ -122,6 +122,7 @@
   "kerningPairs": [],
   "ranges": [
     {"lower":32,"upper":127,},
+    {"lower":9632,"upper":9632,},
     {"lower":9647,"upper":9647,},
   ],
   "regenerateBitmap": false,

@@ -10,4 +10,5 @@ function NoteMake(note_type,line_id,isDown,offset){
 	obj._line = line_id;
 	obj._isDown = isDown;
 	obj._offset = offset;
+	return obj;
 }

@@ -1,10 +1,11 @@
 _hl = false;
 _line = obj_line;
-_time = 1000;
+_time = 6000;
 _isDown = 1;
 _offset = 0;
 _linex = 0;
 _liney = 0;
+_stop = 0;
 _x = 0
 _y = 0;
 image_xscale = 0.1;
