@@ -66,3 +66,4 @@ if(p=TK(19,6))NoteMake("blue",line[1],1,-100)
 if(p=TK(19,11))NoteMake("blue",line[1],1,-200)
 
 
+
