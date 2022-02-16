@@ -1,6 +1,6 @@
 if!(_stop){
-if(_isDown)_time-=5;
-if!(_isDown)_time+=5;
+if(_isDown)_time-=_speed;
+if!(_isDown)_time+=_speed;
 }
 _linex = _line._line_x + lengthdir_x(_offset,_line._line_angle)
 _liney = _line._line_y + lengthdir_y(_offset,_line._line_angle)

@@ -5,35 +5,35 @@ var c=_change;
 var d=_duration;
 
 switch(_tween){
-	case GMU_ANIM.LINEAR:
+	case ANIM.LINEAR:
 		r=(t/d)*c+b;
 		break;
 		
-	case GMU_ANIM.SINE:
+	case ANIM.SINE:
 		switch(_ease){
-			case GMU_ANIM.IN:
+			case ANIM.IN:
 				r=-c*cos(t/d*(pi/2))+c+b;
 				break;
-			case GMU_ANIM.OUT:
+			case ANIM.OUT:
 				r=c*sin(t/d*(pi/2))+b;
 				break;
-			case GMU_ANIM.IN_OUT:
+			case ANIM.IN_OUT:
 				r=-c/2*(cos(pi*t/d)-1)+b;
 				break;
 		}
 		break;
 		
-	case GMU_ANIM.QUAD:
+	case ANIM.QUAD:
 		switch(_ease){
-			case GMU_ANIM.IN:
+			case ANIM.IN:
 				t/=d;
 				r=c*t*t+b;
 				break;
-			case GMU_ANIM.OUT:
+			case ANIM.OUT:
 				t/=d;
 				r=-c*t*(t-2)+b;
 				break;
-			case GMU_ANIM.IN_OUT:
+			case ANIM.IN_OUT:
 				t/=d/2;
 				if(t<1){
 					r=c/2*t*t+b;
@@ -44,17 +44,17 @@ switch(_tween){
 		}
 		break;
 		
-	case GMU_ANIM.CUBIC:
+	case ANIM.CUBIC:
 		switch(_ease){
-			case GMU_ANIM.IN:
+			case ANIM.IN:
 				t/=d;
 				r=c*t*t*t+b;
 				break;
-			case GMU_ANIM.OUT:
+			case ANIM.OUT:
 				t=t/d-1
 				r=c*(t*t*t+1)+b;
 				break;
-			case GMU_ANIM.IN_OUT:
+			case ANIM.IN_OUT:
 				t/=d/2
 				if(t<1){
 					r=c/2*t*t*t+b;
@@ -66,17 +66,17 @@ switch(_tween){
 		}
 		break;
 		
-	case GMU_ANIM.QUART:
+	case ANIM.QUART:
 		switch(_ease){
-			case GMU_ANIM.IN:
+			case ANIM.IN:
 				t/=d;
 				r=c*t*t*t*t+b;
 				break;
-			case GMU_ANIM.OUT:
+			case ANIM.OUT:
 				t=t/d-1;
 				r=-c*(t*t*t*t-1)+b;
 				break;
-			case GMU_ANIM.IN_OUT:
+			case ANIM.IN_OUT:
 				t/=d/2
 				if(t<1){
 					r=c/2*t*t*t*t+b;
@@ -88,17 +88,17 @@ switch(_tween){
 		}
 		break;
 		
-	case GMU_ANIM.QUINT:
+	case ANIM.QUINT:
 		switch(_ease){
-			case GMU_ANIM.IN:
+			case ANIM.IN:
 				t/=d;
 				r=c*t*t*t*t*t + b;
 				break;
-			case GMU_ANIM.OUT:
+			case ANIM.OUT:
 				t=t/d-1;
 				r=c*(t*t*t*t*t+1)+b;
 				break;
-			case GMU_ANIM.IN_OUT:
+			case ANIM.IN_OUT:
 				t/=d/2
 				if(t<1){
 					r=c/2*t*t*t*t*t+b;
@@ -110,23 +110,23 @@ switch(_tween){
 		}
 		break;
 		
-	case GMU_ANIM.EXPO:
+	case ANIM.EXPO:
 		switch(_ease){
-			case GMU_ANIM.IN:
+			case ANIM.IN:
 				if(t==0){
 					r=b;
 				}else{
 					r=c*power(2,10*(t/d-1))+b;
 				}
 				break;
-			case GMU_ANIM.OUT:
+			case ANIM.OUT:
 				if(t==d){
 					r=b+c;
 				}else{
 					r=c * (-power(2,-10*t/d)+1)+b;
 				}
 				break;
-			case GMU_ANIM.IN_OUT:
+			case ANIM.IN_OUT:
 				if (t==0){
 					r=b;
 				}
@@ -143,17 +143,17 @@ switch(_tween){
 		}
 		break;
 		
-	case GMU_ANIM.CIRC:
+	case ANIM.CIRC:
 		switch(_ease){
-			case GMU_ANIM.IN:
+			case ANIM.IN:
 				t/=d;
 				r=-c*(sqrt(1-t*t)-1)+b;
 				break;
-			case GMU_ANIM.OUT:
+			case ANIM.OUT:
 				t=t/d-1;
 				r=c*sqrt(1-t*t)+b;
 				break;
-			case GMU_ANIM.IN_OUT:
+			case ANIM.IN_OUT:
 				t/=d/2;
 				if(t<1){
 					r=-c/2*(sqrt(1-t*t)-1)+b;
@@ -165,22 +165,22 @@ switch(_tween){
 		}
 		break;
 		
-	case GMU_ANIM.BACK:
+	case ANIM.BACK:
 		if(_arg1>0){
 			var s=_arg1;
 		}else{
 			var s=1.70158;
 		}
 		switch(_ease){
-			case GMU_ANIM.IN:
+			case ANIM.IN:
 				t/=d;
 				r=c*t*t*((s+1)*t-s)+b;
 				break;
-			case GMU_ANIM.OUT:
+			case ANIM.OUT:
 				t=t/d-1;
 				r=c*(t*t*((s+1)*t+s)+1)+b;
 				break;
-			case GMU_ANIM.IN_OUT:
+			case ANIM.IN_OUT:
 				t/=d/2;
 				s*=1.525;
 				if(t<1){
@@ -193,11 +193,11 @@ switch(_tween){
 		}
 		break;
 		
-	case GMU_ANIM.ELASTIC:
+	case ANIM.ELASTIC:
 		var a=_arg1;
 		var p=_arg2;
 		switch(_ease){
-			case GMU_ANIM.IN:
+			case ANIM.IN:
 				if(t==0){
 					r=b;
 					break;
@@ -219,7 +219,7 @@ switch(_tween){
 				t-=1;
 				r=-(a*power(2,10*t)* sin((t*d-s)*(2*pi)/p))+b;
 				break;
-			case GMU_ANIM.OUT:
+			case ANIM.OUT:
 				if(t==0){
 					r=b;
 					break;
@@ -240,7 +240,7 @@ switch(_tween){
 				}
 				r=a*power(2,-10*t)*sin((t*d-s)*(2*pi)/p)+c+b;
 				break;
-			case GMU_ANIM.IN_OUT:
+			case ANIM.IN_OUT:
 				if(t==0){
 					r=b;
 					break;
@@ -269,9 +269,9 @@ switch(_tween){
 		}
 		break;
 		
-	case GMU_ANIM.BOUNCE:
+	case ANIM.BOUNCE:
 		switch(_ease){
-			case GMU_ANIM.IN:
+			case ANIM.IN:
 				t=d-t;
 				t/=d;
 				if (t<1/2.75){
@@ -288,7 +288,7 @@ switch(_tween){
 				}
 				r=c-r+b;
 				break;
-			case GMU_ANIM.OUT:
+			case ANIM.OUT:
 				t/=d;
 				if (t<1/2.75){
 					r=c*(7.5625*t*t)+b;
@@ -303,7 +303,7 @@ switch(_tween){
 					r=c*(7.5625*t*t +0.984375)+b;
 				}
 				break;
-			case GMU_ANIM.IN_OUT:
+			case ANIM.IN_OUT:
 				var ease_in;
 				if(t<d/2){
 					t*=2;

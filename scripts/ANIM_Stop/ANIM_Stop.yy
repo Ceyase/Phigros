@@ -6,7 +6,7 @@
     "path": "folders/脚本.yy",
   },
   "resourceVersion": "1.0",
-  "name": "GMU_Anim_Skip",
+  "name": "ANIM_Stop",
   "tags": [],
   "resourceType": "GMScript",
 }

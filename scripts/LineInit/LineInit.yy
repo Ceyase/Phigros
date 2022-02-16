@@ -6,7 +6,7 @@
     "path": "folders/脚本.yy",
   },
   "resourceVersion": "1.0",
-  "name": "GMU_Anim_New",
+  "name": "LineInit",
   "tags": [],
   "resourceType": "GMScript",
 }

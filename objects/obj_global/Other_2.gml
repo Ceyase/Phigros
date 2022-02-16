@@ -1,3 +1,5 @@
 global._line_color = c_white;
-GMU_Anim_Init()
+ANIM_Init()
+
+LineInit();
 alarm[0] = 10

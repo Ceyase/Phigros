@@ -8,7 +8,7 @@
 ///@arg delay*
 ///@arg arg1*
 ///@arg arg2*
-function GMU_Anim_New(){
+function ANIM_New(){
 var inst=argument[0];
 var var_name=argument[1];
 var tween=argument[2];
@@ -32,7 +32,7 @@ if(argument_count>=10){
 
 var inst_result=noone;
 
-if(duration>=0 && (((tween>=0 && tween<=GMU_ANIM.BOUNCE) && (ease>=GMU_ANIM.IN && ease<=GMU_ANIM.IN_OUT)) || tween==GMU_ANIM.LINEAR)){
+if(duration>=0 && (((tween>=0 && tween<=ANIM.BOUNCE) && (ease>=ANIM.IN && ease<=ANIM.IN_OUT)) || tween==ANIM.LINEAR)){
 	if(instance_exists(inst)){
 		var proc=0;
 		var proc_result=0;
@@ -42,7 +42,7 @@ if(duration>=0 && (((tween>=0 && tween<=GMU_ANIM.BOUNCE) && (ease>=GMU_ANIM.IN &
 			inst_find=instance_find(inst,proc);
 			if(instance_exists(inst_find)){
 				if(variable_instance_exists(inst_find,var_name)){
-					inst_result[proc_result]=instance_create_depth(0,0,0,_gmu_anim);
+					inst_result[proc_result]=instance_create_depth(0,0,0,_ANIM);
 					inst_result[proc_result]._inst=inst_find;
 					inst_result[proc_result]._var_name=var_name;
 					inst_result[proc_result]._tween=tween;
@@ -61,7 +61,7 @@ if(duration>=0 && (((tween>=0 && tween<=GMU_ANIM.BOUNCE) && (ease>=GMU_ANIM.IN &
 		}
 	}else if(inst==global){
 		if(variable_global_exists(var_name)){
-			inst_result=instance_create_depth(0,0,0,_gmu_anim);
+			inst_result=instance_create_depth(0,0,0,_ANIM);
 			inst_result._inst=global;
 			inst_result._var_name=var_name;
 			inst_result._tween=tween;

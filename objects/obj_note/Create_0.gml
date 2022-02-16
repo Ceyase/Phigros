@@ -1,6 +1,8 @@
 _hl = false;
 _line = obj_line;
-_time = 6000;
+_speed = 5;
+_s = 10
+_time = _s*120*_speed;
 _isDown = 1;
 _offset = 0;
 _linex = 0;

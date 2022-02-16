@@ -1,6 +1,6 @@
-// GMU_Anim v2.1.0
-function GMU_Anim_Init(){
-enum GMU_ANIM{
+// ANIM v2.1.0
+function ANIM_Init(){
+enum ANIM{
 	LINEAR,
 	SINE,
 	QUAD,
