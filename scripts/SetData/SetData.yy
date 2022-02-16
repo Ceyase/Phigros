@@ -6,7 +6,7 @@
     "path": "folders/脚本.yy",
   },
   "resourceVersion": "1.0",
-  "name": "NoteStop",
+  "name": "SetData",
   "tags": [],
   "resourceType": "GMScript",
 }

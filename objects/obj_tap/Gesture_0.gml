@@ -1,1 +1,1 @@
-event_user(0)
+if(_isFake==0)event_user(0)

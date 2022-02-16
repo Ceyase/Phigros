@@ -1,1 +1,1 @@
-if(position_meeting(mouse_x,mouse_y,id))event_user(0)
+if(position_meeting(mouse_x,mouse_y,id)&&(_isFake==0))event_user(0)
