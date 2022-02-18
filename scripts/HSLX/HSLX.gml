@@ -1,4 +1,4 @@
 ///@arg hsl
 function HSLX(hsl){
-	return HSL + HSL * hsl
+	return HSL + HSL * (hsl/10)
 }
