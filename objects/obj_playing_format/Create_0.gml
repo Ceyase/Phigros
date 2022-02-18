@@ -9,6 +9,7 @@ global.MusicID = 9999;
 
 audio_stop_all()
 alarm[1] = 10;//音频校准
+alarm[0] = 30;//铺面读取
 s = 0
 p = 0
 line = [];
@@ -29,7 +30,14 @@ global.s = 0//单位为“秒”，舍弃掉了帧判定
 
 
 judgeLineList = ds_map_find_value(dsmap,"judgeLineList")
+
+Judg = ds_map_create()
+JudgMeta = ds_list_create()
+Events = ds_map_create()
+
+
 for(var i=0;i<ds_list_size(judgeLineList);i++){
+	
 	line[i] = LineMake()
 	judgeLineListMap = ds_list_find_value(judgeLineList,i)
 	global.bpm = ds_map_find_value(judgeLineListMap,"bpm")
@@ -40,7 +48,11 @@ for(var i=0;i<ds_list_size(judgeLineList);i++){
 		//endTime = ds_map_find_value(speedEventsMap,"endTime")
 		//floorPosition = ds_map_find_value(speedEventsMap,"floorPosition")
 		value = ds_map_find_value(speedEventsMap,"value")
-		SetData(line[i],"_line_speed",value,startTime)
+		
+		ds_map_add(speedEventsMap,"line",i)
+		ds_map_add(speedEventsMap,"EvenType","speedEvents")
+		ds_map_add_map(Events,string(startTime) + "speedEvents",speedEventsMap)
+		//SetData(line[i],"_line_speed",value,startTime)
 	}
 	notesAbove = ds_map_find_value(judgeLineListMap,"notesAbove")
 	for(var j=0;j<ds_list_size(notesAbove);j++){
@@ -48,9 +60,13 @@ for(var i=0;i<ds_list_size(judgeLineList);i++){
 		type = ds_map_find_value(notesAboveMap,"type")
         time = ds_map_find_value(notesAboveMap,"time")
         positionX = ds_map_find_value(notesAboveMap,"positionX")
-		if(type=1)NoteMake("blue",line[i],1,HSLX(positionX/10),time)
-		if(type=2)NoteMake("yellow",line[i],1,HSLX(positionX/10),time)
-		if(type=4)NoteMake("red",line[i],1,HSLX(positionX/10),time)
+		//if(type=1)NoteMake("blue",line[i],1,HSLX(positionX/10),time)
+		//if(type=2)NoteMake("yellow",line[i],1,HSLX(positionX/10),time)
+		//if(type=4)NoteMake("red",line[i],1,HSLX(positionX/10),time)
+		
+		ds_map_add(notesAboveMap,"line",i)
+		ds_map_add(notesAboveMap,"EvenType","notesAbove")
+		ds_map_add_map(Events,string(time) + "notesAbove",speedEventsMap)
 	}
 	notesBelow = ds_map_find_value(judgeLineListMap,"notesBelow")
 	for(var j=0;j<ds_list_size(notesBelow);j++){
@@ -58,9 +74,13 @@ for(var i=0;i<ds_list_size(judgeLineList);i++){
 		type = ds_map_find_value(notesBelowMap,"type")
         time = ds_map_find_value(notesBelowMap,"time")
         positionX = ds_map_find_value(notesBelowMap,"positionX")
-		if(type=1)NoteMake("blue",line[i],0,HSLX(positionX/10),time)
-		if(type=2)NoteMake("yellow",line[i],0,HSLX(positionX/10),time)
-		if(type=4)NoteMake("red",line[i],0,HSLX(positionX/10),time)
+		//if(type=1)NoteMake("blue",line[i],0,HSLX(positionX/10),time)
+		//if(type=2)NoteMake("yellow",line[i],0,HSLX(positionX/10),time)
+		//if(type=4)NoteMake("red",line[i],0,HSLX(positionX/10),time)
+		
+		ds_map_add(notesBelowMap,"line",i)
+		ds_map_add(notesBelowMap,"EvenType","notesBelow")
+		ds_map_add_map(Events,string(time) + "notesBelow",speedEventsMap)
 	}
 	judgeLineDisappearEvents = ds_map_find_value(judgeLineListMap,"judgeLineDisappearEvents")
 	for(var j=0;j<ds_list_size(judgeLineDisappearEvents);j++){
@@ -71,7 +91,11 @@ for(var i=0;i<ds_list_size(judgeLineList);i++){
         end1 = ds_map_find_value(judgeLineDisappearEventsMap,"end")
         //start2 = ds_map_find_value(judgeLineDisappearEventsMap,"start2")
         //end2 = ds_map_find_value(judgeLineDisappearEventsMap,"end2")
-		ANIM_New(line[i],"lineAlpha",0,0,start,end1-start,endTime-startTime,startTime)
+		//ANIM_New(line[i],"lineAlpha",0,0,start,end1-start,endTime-startTime,startTime)
+		
+		ds_map_add(judgeLineDisappearEventsMap,"line",i)
+		ds_map_add(judgeLineDisappearEventsMap,"EvenType","judgeLineDisappearEvents")
+		ds_map_add_map(Events,string(startTime) + "judgeLineDisappearEvents",speedEventsMap)
 	}
 	judgeLineMoveEvents = ds_map_find_value(judgeLineListMap,"judgeLineMoveEvents")
 	for(var j=0;j<ds_list_size(judgeLineMoveEvents);j++){
@@ -82,8 +106,12 @@ for(var i=0;i<ds_list_size(judgeLineList);i++){
         end1 = ds_map_find_value(judgeLineMoveEventsMap,"end")
         start2 = ds_map_find_value(judgeLineMoveEventsMap,"start2")
         end2 = ds_map_find_value(judgeLineMoveEventsMap,"end2")
-		ANIM_New(line[i],"controlX",0,0,HSLX(start),HSLX(end1-start),endTime-startTime,startTime)
-		ANIM_New(line[i],"controlY",0,0,HSLY(start2),HSLY(end2-start2),endTime-startTime,startTime)
+		//ANIM_New(line[i],"controlX",0,0,HSLX(start),HSLX(end1-start),endTime-startTime,startTime)
+		//ANIM_New(line[i],"controlY",0,0,HSLY(start2),HSLY(end2-start2),endTime-startTime,startTime)
+		
+		ds_map_add(judgeLineMoveEventsMap,"line",i)
+		ds_map_add(judgeLineMoveEventsMap,"EvenType","judgeLineMoveEvents")
+		ds_map_add_map(Events,string(startTime) + "judgeLineMoveEvents",speedEventsMap)
 	}
 	judgeLineRotateEvents = ds_map_find_value(judgeLineListMap,"judgeLineRotateEvents")
 	for(var j=0;j<ds_list_size(judgeLineRotateEvents);j++){
@@ -94,11 +122,18 @@ for(var i=0;i<ds_list_size(judgeLineList);i++){
         end1 = ds_map_find_value(judgeLineRotateEventsMap,"end")
         //start2 = ds_map_find_value(judgeLineRotateEventsMap,"start2")
         //end2 = ds_map_find_value(judgeLineRotateEventsMap,"end2")
-		ANIM_New(line[i],"_line_angle",0,0,start,end1-start,endTime-startTime,startTime)
+		//ANIM_New(line[i],"_line_angle",0,0,start,end1-start,endTime-startTime,startTime)
+		
+		ds_map_add(judgeLineRotateEventsMap,"line",i)
+		ds_map_add(judgeLineRotateEventsMap,"EvenType","judgeLineRotateEvents")
+		ds_map_add_map(Events,string(startTime) + "judgeLineRotateEvents",speedEventsMap)
 	}
 }
 
-Judg = ds_map_create()
-JudgMeta = ds_list_create()
 ds_list_add(JudgMeta,global.noteNum)
 ds_list_add(JudgMeta,global.bpm)
+ds_list_add(JudgMeta,ds_list_size(judgeLineList))
+ds_map_add_list(Judg,"JudgMeta",JudgMeta)
+ds_map_add_map(Judg,"Events",Events)
+
+clipboard_set_text(json_encode(Judg))
