@@ -1,18 +1,27 @@
 if(_line != noone){
+_speed = _line._line_speed;
+
 if!(_stop){
-if(_isDown=1)_time = -(global.s+10-_s)*120*_speed;
-if(_isDown=0)_time = (global.s+10-_s)*120*_speed;
+_time = ((_tick-global.tick)/global.timingbase)*_speed*HSL
 }
-/*
-if!(_stop){
-if(_isDown)_time-=_speed;
-if!(_isDown)_time+=_speed;
-}*/
-_linex = _line._line_x + lengthdir_x(_offset,_line._line_angle)
-_liney = _line._line_y + lengthdir_y(_offset,_line._line_angle)
+
+_linex = _line.controlX + lengthdir_x(_offset,_line._line_angle)
+_liney = _line.controlY + lengthdir_y(_offset,_line._line_angle)
+
+if(_isDown){
 _x = _linex + lengthdir_x(_time,_line._line_angle+90)
 _y = _liney + lengthdir_y(_time,_line._line_angle+90)
+}
+
+if!(_isDown){
+_x = _linex - lengthdir_x(_time,_line._line_angle+90)
+_y = _liney - lengthdir_y(_time,_line._line_angle+90)
+}
+
 x = _x;
 y = _y;
 image_angle = _line._line_angle
+
 }
+if(_time>displayRange)image_alpha = 0;
+if(_time<=displayRange)image_alpha = noteAlpha;

@@ -1,4 +1,5 @@
-_line_x = room_width/2
-_line_y = room_height/2
+controlX = HSLX(0)
+controlY = HSLY(0)
 _line_angle = 0;
-_line_alpha = 1;
+lineAlpha = 1;
+_line_speed = 1;

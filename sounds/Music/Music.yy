@@ -11,8 +11,8 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "Music.mp3",
-  "duration": 150.674286,
+  "soundFile": "Music.ogg",
+  "duration": 132.631592,
   "parent": {
     "name": "Bgm",
     "path": "folders/声音/Bgm.yy",

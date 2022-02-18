@@ -1,4 +1,5 @@
 /// @description Die
+
 global.noteNumNow +=1
 global.point += global.pointUp
 show_debug_message(global.noteNumNow)

@@ -4,7 +4,7 @@
 ///@arg time
 ///@arg delay
 function LineMove(lineid,linex,liney,time,delay){
-	delay *= 120
-	ANIM_New(lineid,"_line_x",0,0,lineid._line_x,linex-lineid._line_x,time,delay)
-	ANIM_New(lineid,"_line_y",0,0,lineid._line_y,liney-lineid._line_y,time,delay)
+	delay *= global.bpm
+	ANIM_New(lineid,"controlX",0,0,lineid.controlX,linex-lineid.controlX,time,delay)
+	ANIM_New(lineid,"controlY",0,0,lineid.controlY,liney-lineid.controlY,time,delay)
 }

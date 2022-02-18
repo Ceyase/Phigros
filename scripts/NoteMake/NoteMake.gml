@@ -2,8 +2,8 @@
 ///@arg line_id
 ///@arg isDown
 ///@arg offset
-///@arg s
-function NoteMake(note_type,line_id,isDown,offset,s){
+///@arg tick
+function NoteMake(note_type,line_id,isDown,offset,tick){
 	if(note_type == "red")note_type = obj_filck;
 	else if(note_type == "blue")note_type = obj_tap;
 	else if(note_type == "yellow")note_type = obj_drag;
@@ -11,6 +11,6 @@ function NoteMake(note_type,line_id,isDown,offset,s){
 	obj._line = line_id;
 	obj._isDown = isDown;
 	obj._offset = offset;
-	obj._s = s+10;
+	obj._tick = tick;
 	return obj;
 }

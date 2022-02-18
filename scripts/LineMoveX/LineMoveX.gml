@@ -3,6 +3,6 @@
 ///@arg time
 ///@arg delay
 function LineMoveX(lineid,linex,time,delay){
-	delay *= 120
-	ANIM_New(lineid,"_line_x",0,0,lineid._line_x,linex-lineid._line_x,time,delay)
+	delay *= global.bpm
+	ANIM_New(lineid,"controlX",0,0,lineid.controlX,linex-lineid.controlX,time,delay)
 }

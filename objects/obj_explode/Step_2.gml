@@ -1,3 +1,3 @@
-if(image_index == 29){
+if(image_index == 0){
 instance_destroy()
 }
