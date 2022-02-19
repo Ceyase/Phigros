@@ -1,4 +1,4 @@
 ///@arg hsl
 function HSLX(hsl){
-	return HSL + HSL * (hsl/10)
+	return window_width/2 + window_width/2 * (hsl/10)
 }

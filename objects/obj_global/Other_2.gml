@@ -25,8 +25,8 @@ show_message(str)
 这个项目如果不支持肯定不好（
 */
 #macro HSL 384 //1 HSL 是屏幕较长边缘的一半长度。
-#macro window_height HSL*2
-#macro window_width HSL*2
+#macro window_height 768
+#macro window_width 1366
 
 
 global.musicOffset = 0 //音乐偏移(musicOffset)表示音乐开始后的时间长度。

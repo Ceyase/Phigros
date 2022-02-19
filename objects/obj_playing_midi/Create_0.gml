@@ -5,20 +5,6 @@
 这个项目如果不支持肯定不好（
 */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 step = 10*global.bpm
 
 
@@ -76,6 +62,16 @@ alarm[4] = 1000
 //c[0]=音符开始时长c[1]=音高c[2]=音量c[3]=音符结束时间
 
 global.MusicID = audio_play_sound(Music,0,0)
+
+
+Judg = ds_map_create()
+JudgMeta = ds_list_create()
+Events = ds_map_create()
+
+global.bpm = 60
+ds_list_add(JudgMeta,global.noteNum)
+ds_list_add(JudgMeta,global.bpm)
+ds_list_add(JudgMeta,0)
 
 
 line[1] = LineMake();

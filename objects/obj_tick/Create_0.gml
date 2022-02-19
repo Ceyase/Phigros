@@ -1,0 +1,2 @@
+text = ""
+hspeed = -10

@@ -1,4 +1,4 @@
 ///@arg hsl
 function HSLY(hsl){
-	return HSL - HSL*(hsl/10)
+	return window_height/2 - window_height/2 * (hsl/10)
 }

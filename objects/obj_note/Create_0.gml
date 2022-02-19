@@ -12,6 +12,6 @@ _x = 0
 _y = 0;
 _isFake = 0
 noteAlpha = 1;
-displayRange = HSL; //显示范围
+displayRange = 2*HSL; //显示范围
 image_xscale = 0.15;
 image_yscale = 0.2;

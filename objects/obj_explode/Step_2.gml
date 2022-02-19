@@ -1,1 +1,1 @@
-if (image_index>=image_number-1)instance_destroy();
+if (image_index>=image_number-3)instance_destroy();

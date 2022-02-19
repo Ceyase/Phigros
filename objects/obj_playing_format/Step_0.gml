@@ -1,33 +1,33 @@
 //获取tick
 global.tick++
-if(ds_map_exists(Events,string(global.tick)+"speedEvents")){
-	Map = ds_map_find_value(Events,string(global.tick)+"speedEvents")
+if(ds_map_exists(Events,string(global.tick)+"sE")){
+	Map = ds_map_find_value(Events,string(global.tick)+"sE")
 	value = ds_map_find_value(Map,"value")
 	linen = ds_map_find_value(Map,"line")
 	line[linen]._line_speed = value
 }
-if(ds_map_exists(Events,string(global.tick+50)+"notesAbove")){
-	Map = ds_map_find_value(Events,string(global.tick+50)+"notesAbove")
+if(ds_map_exists(Events,string(global.tick+100)+"nA")){
+	Map = ds_map_find_value(Events,string(global.tick+100)+"nA")
 	type = ds_map_find_value(Map,"type")
     time = ds_map_find_value(Map,"time")
     positionX = ds_map_find_value(Map,"positionX")
 	linen = ds_map_find_value(Map,"line")
-	if(type=1)NoteMake("blue",line[linen],1,HSLL(positionX),time)
-	if(type=2)NoteMake("yellow",line[linen],1,HSLL(positionX),time)
-	if(type=4)NoteMake("red",line[linen],1,HSLL(positionX),time)
+	if(type=1)NoteMake("blue",line[linen],1,positionX,time)
+	if(type=2)NoteMake("yellow",line[linen],1,positionX,time)
+	if(type=4)NoteMake("red",line[linen],1,positionX,time)
 }
-if(ds_map_exists(Events,string(global.tick+50)+"notesBelow")){
-	Map = ds_map_find_value(Events,string(global.tick+50)+"notesBelow")
+if(ds_map_exists(Events,string(global.tick+100)+"nB")){
+	Map = ds_map_find_value(Events,string(global.tick+100)+"nB")
 	type = ds_map_find_value(Map,"type")
     time = ds_map_find_value(Map,"time")
     positionX = ds_map_find_value(Map,"positionX")
 	linen = ds_map_find_value(Map,"line")
-	if(type=1)NoteMake("blue",line[linen],0,HSLL(positionX),time)
-	if(type=2)NoteMake("yellow",line[linen],0,HSLL(positionX),time)
-	if(type=4)NoteMake("red",line[linen],0,HSLL(positionX),time)
+	if(type=1)NoteMake("blue",line[linen],0,positionX,time)
+	if(type=2)NoteMake("yellow",line[linen],0,positionX,time)
+	if(type=4)NoteMake("red",line[linen],0,positionX,time)
 }
-if(ds_map_exists(Events,string(global.tick)+"judgeLineDisappearEvents")){
-	Map = ds_map_find_value(Events,string(global.tick)+"judgeLineDisappearEvents")
+if(ds_map_exists(Events,string(global.tick)+"jLDE")){
+	Map = ds_map_find_value(Events,string(global.tick)+"jLDE")
 	startTime = ds_map_find_value(Map,"startTime")
     endTime = ds_map_find_value(Map,"endTime")
     start = ds_map_find_value(Map,"start")
@@ -35,8 +35,8 @@ if(ds_map_exists(Events,string(global.tick)+"judgeLineDisappearEvents")){
 	linen = ds_map_find_value(Map,"line")
 	ANIM_New(line[linen],"lineAlpha",0,0,start,end1-start,endTime-startTime)
 }
-if(ds_map_exists(Events,string(global.tick)+"judgeLineMoveEvents")){
-	Map = ds_map_find_value(Events,string(global.tick)+"judgeLineMoveEvents")
+if(ds_map_exists(Events,string(global.tick)+"jLME")){
+	Map = ds_map_find_value(Events,string(global.tick)+"jLME")
 	startTime = ds_map_find_value(Map,"startTime")
     endTime = ds_map_find_value(Map,"endTime")
     start = ds_map_find_value(Map,"start")
@@ -47,8 +47,8 @@ if(ds_map_exists(Events,string(global.tick)+"judgeLineMoveEvents")){
 	ANIM_New(line[linen],"controlX",0,0,HSLX(start),HSLX(end1-start),endTime-startTime)
 	ANIM_New(line[linen],"controlY",0,0,HSLY(start2),HSLY(end2-start2),endTime-startTime)
 }
-if(ds_map_exists(Events,string(global.tick)+"judgeLineRotateEvents")){
-	Map = ds_map_find_value(Events,string(global.tick)+"judgeLineRotateEvents")
+if(ds_map_exists(Events,string(global.tick)+"jLRE")){
+	Map = ds_map_find_value(Events,string(global.tick)+"jLRE")
 	startTime = ds_map_find_value(Map,"startTime")
     endTime = ds_map_find_value(Map,"endTime")
     start = ds_map_find_value(Map,"start")
